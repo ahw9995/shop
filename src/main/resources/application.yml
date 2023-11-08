@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    write:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&useUnicode=true&allowMultiQueries=true&autoReconnect=true&useConnectionPlugins=false&enableClusterAwareFailover=false
+      username: root
+      password: password
+    read:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3308/test_db?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&useUnicode=true&allowMultiQueries=true&autoReconnect=true&useConnectionPlugins=false&enableClusterAwareFailover=false
+      username: root
+      password: password
+  jpa:
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
