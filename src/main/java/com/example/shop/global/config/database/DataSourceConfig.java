@@ -1,4 +1,4 @@
-package com.example.shop.config.database;
+package com.example.shop.global.config.database;
 
 import com.zaxxer.hikari.HikariDataSource;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-    basePackages = "com.example.shop.api"
+    basePackages = "com.example.shop.domain.*"
 )
 public class DataSourceConfig {
 
