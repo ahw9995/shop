@@ -1,5 +1,9 @@
 package com.example.shop.domain.member.application;
 
+import com.example.shop.domain.member.domain.Member;
+import com.example.shop.domain.member.domain.MemberRepository;
+import com.example.shop.domain.member.dto.MemberJoinReq;
+import com.example.shop.global.util.encrypt.EncryptSHA;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,15 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class MemberJoinService {
 
-    // TODO: 회원 가입
+    private final MemberRepository memberRepository;
+
     @Transactional
-    public void memberJoin() {
-        // 1. 회원 정보를 저장한다.
+    public Member memberJoin(MemberJoinReq req) {
 
-        // 2. 마케팅 수신 정보 동의를 저장한다.
-
-        // 3. 토큰을 발급한다.
-
-        // 4. 토큰을 리턴한다.
+        // 회원 정보를 저장한다.
+        return memberRepository.save(Member.builder()
+            .email(req.getEmail())
+            .nickname(req.getNickname())
+            .password(EncryptSHA.encryptSha512(req.getPassword()))
+            .build());
     }
 }

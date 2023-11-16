@@ -24,5 +24,4 @@ public class MemberJoinReq {
     private final String nickname;
 
     private final boolean marketingYn;
-
 }
