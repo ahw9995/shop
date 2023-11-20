@@ -1,5 +1,6 @@
 package com.example.shop.global.error;
 
+import com.example.shop.domain.member.exception.MemberJoinExistEmailException;
 import com.example.shop.global.common.response.ResponseObject;
 import com.example.shop.global.common.response.ResultObject;
 import io.micrometer.common.util.StringUtils;
@@ -26,5 +27,15 @@ public class GlobalControllerAdvice {
         return ResponseEntity.internalServerError()
             .body(new ResponseObject<>(
                 new ResultObject(errorMessage)));
+    }
+
+    @ExceptionHandler(MemberJoinExistEmailException.class)
+    public ResponseEntity<ResponseObject<Object>> memberJoinExistEmailExceptionHandler(
+        MemberJoinExistEmailException e) {
+
+        log.error("error => ", e);
+
+        return ResponseEntity.internalServerError()
+            .body(new ResponseObject<>(new ResultObject(e.getMessage())));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.shop.domain.member.application;
 
+import com.example.shop.domain.member.domain.MemberMarketingRepository;
 import com.example.shop.domain.member.domain.MemberRepository;
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberLoginService {
 
     private final MemberRepository memberRepository;
+    private final MemberMarketingRepository memberMarketingRepository;
 
     // TODO: 회원 로그인
     public void memberLogin() {

@@ -4,6 +4,7 @@ import com.example.shop.domain.member.domain.Member;
 import com.example.shop.domain.member.dto.JwtToken;
 import com.example.shop.domain.member.dto.MemberJoinReq;
 import com.example.shop.domain.member.dto.MemberJoinRes;
+import com.example.shop.domain.member.exception.MemberJoinExistEmailException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +23,11 @@ public class MemberJoinFacade {
     public MemberJoinRes memberJoin(MemberJoinReq req) {
 
         if (memberLoginService.existEmail(req.getEmail())) {
-            // 에러 던지기
+            throw new MemberJoinExistEmailException("이미 가입된 이메일 주소 입니다.");
         }
 
         Member member = memberJoinService.memberJoin(req);
-        memberMarketingService.saveMemberMarketing(member.getSeq(), req.isMarketingYn());
+        memberMarketingService.saveMemberMarketing(member, req.isMarketingYn());
         JwtToken token = memberTokenService.createToken(member.getSeq(), req.getEmail());
 
         return MemberJoinRes.builder()
