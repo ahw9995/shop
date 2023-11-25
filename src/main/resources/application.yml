@@ -4,14 +4,14 @@ spring:
   datasource:
     write:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/test_db?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&useUnicode=true&allowMultiQueries=true&autoReconnect=true&useConnectionPlugins=false&enableClusterAwareFailover=false
+      jdbc-url: jdbc:mysql://localhost:3306/shop?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&useUnicode=true&allowMultiQueries=true&autoReconnect=true&useConnectionPlugins=false&enableClusterAwareFailover=false
       username: root
-      password: password
+      password: p@ssw0rd
     read:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3308/test_db?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&useUnicode=true&allowMultiQueries=true&autoReconnect=true&useConnectionPlugins=false&enableClusterAwareFailover=false
+      jdbc-url: jdbc:mysql://localhost:3306/shop?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false&useUnicode=true&allowMultiQueries=true&autoReconnect=true&useConnectionPlugins=false&enableClusterAwareFailover=false
       username: root
-      password: password
+      password: p@ssw0rd
   jpa:
     hibernate:
       ddl-auto: none
@@ -21,3 +21,8 @@ spring:
       hibernate:
         format_sql: true
     database: mysql
+
+jwt-token:
+  secretKey: 21c6342bcdce18367be621232cdd48ae9f6fd78087610949107fa8ed1e87597000b80bdc230080e0b2e30f564bbd07688a65d9c4d53181b10cf18a2203477f2c
+  access-token-expired-minutes: 1440
+  refresh-token-expired-minutes: 43200
