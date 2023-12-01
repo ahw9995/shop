@@ -10,6 +10,6 @@ import lombok.ToString;
 public class JwtClaim {
 
     private final String email;
-    private final long seq;
+    private final String seq;
 
 }

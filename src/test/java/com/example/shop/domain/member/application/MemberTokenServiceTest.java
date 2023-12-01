@@ -1,8 +1,6 @@
 package com.example.shop.domain.member.application;
 
-import com.example.shop.domain.member.dto.JwtClaim;
 import com.example.shop.domain.member.dto.JwtToken;
-import com.example.shop.domain.member.dto.TokenType;
 import com.example.shop.global.properties.JwtTokenProperties;
 import com.example.shop.global.util.encrypt.EncryptSHA;
 import io.jsonwebtoken.security.Keys;
@@ -50,5 +48,4 @@ class MemberTokenServiceTest {
     void getJwtTokenProperties() {
         System.out.println(jwtTokenProperties.toString());
     }
-
 }

@@ -15,4 +15,10 @@ public class MemberRepositoryCustomImpl implements MemberRepositoryCustom {
 
         return queryFactory.select(member).from(member).where(member.email.eq(email)).fetchOne();
     }
+
+    @Override
+    public Member findByRefreshToken(String refreshToken) {
+        return queryFactory.select(member).from(member).where(member.refreshToken.eq(refreshToken))
+            .fetchOne();
+    }
 }

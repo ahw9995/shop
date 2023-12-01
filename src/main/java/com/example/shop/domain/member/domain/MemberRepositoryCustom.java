@@ -4,4 +4,5 @@ public interface MemberRepositoryCustom {
 
     Member findByEmail(String email);
 
+    Member findByRefreshToken(String refreshToken);
 }

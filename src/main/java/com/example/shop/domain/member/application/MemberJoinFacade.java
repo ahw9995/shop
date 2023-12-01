@@ -29,7 +29,8 @@ public class MemberJoinFacade {
         Member member = memberJoinService.memberJoin(req);
         memberMarketingService.saveMemberMarketing(member, req.isMarketingYn());
         JwtToken token = memberTokenService.createToken(member.getSeq(), req.getEmail());
-
+        member.updateRefreshToken(token.getRefreshToken());
+        
         return MemberJoinRes.builder()
             .accessToken(token.getAccessToken())
             .refreshToken(token.getRefreshToken())

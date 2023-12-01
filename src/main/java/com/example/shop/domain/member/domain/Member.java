@@ -35,6 +35,9 @@ public class Member extends BaseEntity {
     @Column(name = "nickname", nullable = false)
     private String nickname;
 
+    @Column(name = "refresh_token", nullable = true, length = 500)
+    private String refreshToken;
+
     @Builder
     public Member(String email, String password, String nickname) {
         this.email = email;
@@ -44,5 +47,9 @@ public class Member extends BaseEntity {
 
     public void updatePassword(String password) {
         this.password = password;
+    }
+
+    public void updateRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }
